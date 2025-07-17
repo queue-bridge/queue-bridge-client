@@ -1,0 +1,20 @@
+syntax = "proto3";
+package queuebridge;
+
+option go_package = "github.com/queue-bridge/queue-bridge-client/gen/proto/queuebridge";
+
+message QueueMessage {
+  string queue_id = 1;
+  bytes message = 2;
+}
+
+message EmptyResponse {}
+
+message PushBatchRequest {
+  repeated QueueMessage messages = 1;
+}
+
+service QueueBridgeBalancer {
+  rpc Push(QueueMessage) returns (EmptyResponse);
+  rpc PushBatch(PushBatchRequest) returns (EmptyResponse);
+}
