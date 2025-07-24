@@ -5,6 +5,8 @@ plugins:
     opt: paths=source_relative
   - plugin: java
     out: gen/java
+  - plugin: grpc-java
+    out: gen/java
   - plugin: ts_proto
     out: gen/ts
     opt: generate_package_definition=true,output_services=grpc-web
